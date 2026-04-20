@@ -4,32 +4,38 @@ import { motion } from "framer-motion"
 import { ProfileSection } from "./profile-section"
 import { LinkCard } from "./link-card"
 import { SocialFooter } from "./social-footer"
-import { CalendarDays, BookOpen, Layers, GraduationCap } from "lucide-react"
+import { Microscope, Droplets, Filter, ShoppingBag, Tag } from "lucide-react"
 
 const links = [
   {
-    title: "Claim Your Spot: 2026 (Q1 intake)",
-    description: "",
-    href: "https://form.jotform.com/253547080077055",
-    icon: CalendarDays,
-  },
-  {
-    title: "Create a financial plan (Free workbook)",
-    description: "",
-    href: "https://www.dropbox.com/scl/fi/c2dyya561n60xoq6xcwfe/The-Ultimate-Financial-Inventory.pdf?rlkey=b9o3oso6ufbrdgmcsh5fki8bi&e=1&st=wcmgxgme&dl=0",
-    icon: BookOpen,
-  },
-  {
-    title: "Understanding Blockchain: The Future of the digital world (FREE)",
-    description: "",
-    href: "https://www.flipsnack.com/9ED86AF7C6F/understanding-blockchain-the-future-of-money-investing",
-    icon: Layers,
-  },
-  {
-    title: "Free Web3 Education Resources",
+    title: "ELECTROLYZED REDUCED WATER RESEARCH",
     description: "",
     href: "#",
-    icon: GraduationCap,
+    icon: Microscope,
+  },
+  {
+    title: "FREE WHATS IN YOUR WATER TEST",
+    description: "",
+    href: "#",
+    icon: Droplets,
+  },
+  {
+    title: "NSF WATER FILTER ($30 off with this link)",
+    description: "",
+    href: "#",
+    icon: Filter,
+  },
+  {
+    title: "HOMEMADE TALLOW BUTTERS",
+    description: "",
+    href: "#",
+    icon: ShoppingBag,
+  },
+  {
+    title: "11% OFF BLUE BOTTLES",
+    description: "",
+    href: "#",
+    icon: Tag,
   },
 ]
 
