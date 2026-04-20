@@ -19,80 +19,29 @@ export function LinkCard({ title, description, href, icon: Icon, image }: LinkCa
       rel="noopener noreferrer"
       className="group relative flex w-full items-center gap-4 rounded-[20px] px-4 py-4 overflow-hidden"
       style={{
-        background: "rgba(255, 255, 255, 0.45)",
-        backdropFilter: "blur(40px) saturate(180%)",
-        WebkitBackdropFilter: "blur(40px) saturate(180%)",
-        boxShadow: `
-          inset 0 1px 1px rgba(255, 255, 255, 0.9),
-          inset 0 -1px 1px rgba(255, 255, 255, 0.1),
-          0 0 0 1px rgba(255, 255, 255, 0.6),
-          0 2px 4px rgba(0, 0, 0, 0.02),
-          0 4px 8px rgba(0, 0, 0, 0.04),
-          0 8px 16px rgba(0, 0, 0, 0.06),
-          0 16px 32px rgba(0, 0, 0, 0.08),
-          0 32px 64px rgba(0, 0, 0, 0.06)
-        `,
-        border: "1px solid rgba(255, 255, 255, 0.5)",
+        background: "linear-gradient(180deg, #FFFFFF 0%, #F7F7F7 100%)",
+        boxShadow: "0 6px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.05)",
+        border: "1px solid rgba(255, 255, 255, 0.15)",
       }}
       whileHover={{
-        scale: 1.02,
-        y: -4,
-        boxShadow: `
-          inset 0 1px 1px rgba(255, 255, 255, 1),
-          inset 0 -1px 1px rgba(255, 255, 255, 0.2),
-          0 0 0 1px rgba(255, 255, 255, 0.7),
-          0 4px 8px rgba(0, 0, 0, 0.04),
-          0 8px 16px rgba(0, 0, 0, 0.06),
-          0 16px 32px rgba(0, 0, 0, 0.08),
-          0 32px 64px rgba(0, 0, 0, 0.1),
-          0 48px 96px rgba(0, 0, 0, 0.08)
-        `,
+        y: -2,
+        boxShadow: "0 10px 28px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255,255,255,0.05)",
       }}
       whileTap={{
-        scale: 0.98,
         y: 0,
+        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.05)",
       }}
       transition={{
         type: "spring",
-        stiffness: 500,
-        damping: 30,
+        stiffness: 400,
+        damping: 35,
       }}
     >
       <div
-        className="absolute inset-x-0 top-0 h-[50%] pointer-events-none"
-        style={{
-          background: "linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.1) 50%, transparent 100%)",
-          borderRadius: "20px 20px 0 0",
-        }}
-      />
-
-      <div
-        className="absolute inset-x-0 bottom-0 h-[30%] pointer-events-none"
-        style={{
-          background: "linear-gradient(0deg, rgba(0,0,0,0.02) 0%, transparent 100%)",
-          borderRadius: "0 0 20px 20px",
-        }}
-      />
-
-      {/* Hover glow effect */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none rounded-[20px] opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{
-          background: "radial-gradient(ellipse at center, rgba(255,255,255,0.4), transparent 70%)",
-        }}
-      />
-
-      <div
         className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden text-gray-700"
         style={{
-          background: "rgba(255, 255, 255, 0.8)",
-          boxShadow: `
-            inset 0 1px 2px rgba(255, 255, 255, 1),
-            inset 0 -1px 1px rgba(0, 0, 0, 0.02),
-            0 2px 4px rgba(0, 0, 0, 0.04),
-            0 4px 8px rgba(0, 0, 0, 0.04)
-          `,
-          border: "1px solid rgba(255, 255, 255, 0.6)",
+          background: "#F2F2F2",
+          border: "1px solid rgba(0, 0, 0, 0.06)",
         }}
       >
         {image ? (
