@@ -15,6 +15,12 @@ const editorial = localFont({
   display: "swap",
 })
 
+const redaction = localFont({
+  src: "../public/Redaction70Italic-MV3Lv.otf",
+  variable: "--font-redaction",
+  display: "swap",
+})
+
 export const metadata: Metadata = {
   title: "Earths Pearl",
   applicationName: "Earths Pearl",
@@ -71,7 +77,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} ${editorial.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${inter.className} ${editorial.variable} ${redaction.variable} font-sans antialiased`}>{children}</body>
     </html>
   )
 }
