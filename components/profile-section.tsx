@@ -49,7 +49,7 @@ export function ProfileSection({ name, bio, imageUrl }: ProfileSectionProps) {
       </motion.div>
 
       <h1 className="mt-5 text-xl font-semibold tracking-tight text-white">{name}</h1>
-      <p className="mt-2 text-sm text-gray-500">{bio}</p>
+      <p className="mt-2 text-sm" style={{ color: "rgba(255, 255, 255, 0.85)" }}>{bio}</p>
     </div>
   )
 }
