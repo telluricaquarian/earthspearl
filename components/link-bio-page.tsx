@@ -185,27 +185,6 @@ export function LinkBioPage() {
         }}
       />
 
-      {/* Diagonal light-sweep shimmer */}
-      <motion.div
-        className="fixed z-0 pointer-events-none"
-        style={{
-          width: "200%",
-          height: "100px",
-          background: "linear-gradient(90deg, transparent, rgba(255,210,150,0.08), transparent)",
-          transform: "rotate(-35deg)",
-          top: "20%",
-          left: "-50%",
-        }}
-        animate={{
-          left: ["-50%", "100%"],
-        }}
-        transition={{
-          duration: 8,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-          repeatDelay: 4,
-        }}
-      />
 
       {/* Atmospheric vignette — soft edge depth, draws focus to center */}
       <div
