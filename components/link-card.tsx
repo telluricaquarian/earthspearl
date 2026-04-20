@@ -67,10 +67,7 @@ export function LinkCard({ title, description, href, icon: Icon, image }: LinkCa
       </div>
 
       <div className="relative flex-1 min-w-0">
-        <h3
-          className="text-[16px] text-gray-800 tracking-normal leading-tight"
-          style={{ fontFamily: "var(--font-redaction)", fontStyle: "italic" }}
-        >{title}</h3>
+        <h3 className="text-[15px] font-semibold text-gray-800 tracking-tight leading-tight">{title}</h3>
         {description && <p className="text-[12px] text-gray-500 truncate mt-0.5">{description}</p>}
       </div>
 
