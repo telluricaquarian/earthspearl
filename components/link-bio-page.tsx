@@ -221,7 +221,7 @@ export function LinkBioPage() {
         <motion.div variants={itemVariants} className="pt-2">
           <ProfileSection
             name="Meghan Giudice"
-            bio="🌸helping women build sustainable businesses the feminine way"
+            bio="🐚 helping women build sustainable businesses the feminine way"
             imageUrl="/earthspearlbalck.png"
           />
         </motion.div>
