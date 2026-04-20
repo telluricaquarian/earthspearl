@@ -139,8 +139,10 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html,
   body {
-    @apply bg-background text-foreground;
+    background-color: #3B200B;
+    @apply text-foreground;
   }
 }
 
