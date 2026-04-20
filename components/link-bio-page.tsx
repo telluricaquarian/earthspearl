@@ -223,7 +223,7 @@ export function LinkBioPage() {
           <ProfileSection
             name="Meghan Giudice"
             bio="🐚 helping women build sustainable businesses the feminine way"
-            imageUrl="/earthspearlbalck.png"
+            imageUrl="/earthspearldisplay.png"
           />
         </motion.div>
 
