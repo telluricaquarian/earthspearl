@@ -16,9 +16,24 @@ const editorial = localFont({
 })
 
 export const metadata: Metadata = {
-  title: "jayla.cross | Creator & Financial Educator",
-  description: "Helping ambitious Creators escape financial stress & create opportunities online.",
+  title: "Earths Pearl",
+  applicationName: "Earths Pearl",
+  authors: [{ name: "Meghan Giudice" }],
+  creator: "Meghan Giudice",
+  publisher: "Earths Pearl",
+  description: "helping women build sustainable businesses the feminine way",
   generator: "v0.app",
+  openGraph: {
+    title: "Earths Pearl",
+    description: "helping women build sustainable businesses the feminine way",
+    siteName: "Earths Pearl",
+  },
+  twitter: {
+    card: "summary",
+    title: "Earths Pearl",
+    description: "helping women build sustainable businesses the feminine way",
+    creator: "@earthspearlll",
+  },
   icons: {
     icon: [
       {
