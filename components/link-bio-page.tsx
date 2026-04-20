@@ -4,6 +4,7 @@ import { motion } from "framer-motion"
 import { ProfileSection } from "./profile-section"
 import { LinkCard } from "./link-card"
 import { SocialFooter } from "./social-footer"
+import { TestimonialMarquee } from "./testimonial-marquee"
 import { Microscope, Droplets } from "lucide-react"
 
 const sections = [
@@ -240,6 +241,7 @@ export function LinkBioPage() {
                   {section.subtext}
                 </p>
               </div>
+              {section.label === "SHOP EARTHS PEARL" && <TestimonialMarquee />}
               <div className="space-y-3">
                 {section.links.map((link) => (
                   <motion.div key={link.title} variants={itemVariants}>
