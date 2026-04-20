@@ -1,10 +1,17 @@
 import type React from "react"
 import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
+import localFont from "next/font/local"
 import "./globals.css"
 
 const inter = Inter({
   subsets: ["latin"],
+  display: "swap",
+})
+
+const editorial = localFont({
+  src: "../public/PPEditorialNew-UltralightItalic.otf",
+  variable: "--font-editorial",
   display: "swap",
 })
 
@@ -49,7 +56,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} font-sans antialiased`}>{children}</body>
+      <body className={`${inter.className} ${editorial.variable} font-sans antialiased`}>{children}</body>
     </html>
   )
 }
