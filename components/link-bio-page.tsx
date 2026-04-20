@@ -207,12 +207,29 @@ export function LinkBioPage() {
         }}
       />
 
-      {/* Noise texture overlay */}
+      {/* Atmospheric vignette — soft edge depth, draws focus to center */}
       <div
         className="pointer-events-none fixed inset-0 z-[1]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`,
-          opacity: 0.025,
+          background: "radial-gradient(ellipse 110% 90% at 50% 44%, transparent 28%, rgba(8, 3, 1, 0.55) 100%)",
+        }}
+      />
+
+      {/* Primary organic grain — earthy coarse texture */}
+      <div
+        className="pointer-events-none fixed inset-0 z-[2]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g1)'/%3E%3C/svg%3E")`,
+          opacity: 0.06,
+        }}
+      />
+
+      {/* Fine film grain — secondary pass for layered tactile depth */}
+      <div
+        className="pointer-events-none fixed inset-0 z-[3]"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g2)'/%3E%3C/svg%3E")`,
+          opacity: 0.032,
         }}
       />
 
