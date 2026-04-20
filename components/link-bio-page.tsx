@@ -26,6 +26,11 @@ const sections = [
         href: "https://www.multipure.com/products/drinking-water-systems/aquaperform/?coupon=435441",
         image: "/images/nsf-water-filter.jpg",
       },
+      {
+        title: "11% OFF BLUE BOTTLES",
+        href: "https://bluebottlelove.com/?ref=840",
+        image: "/images/blue-bottles.png",
+      },
     ],
   },
   {
@@ -36,11 +41,6 @@ const sections = [
         title: "HOMEMADE TALLOW BUTTERS",
         href: "http://earthspearlll.weebly.com/store/p109/earthspearlll.tallowbutter.html",
         image: "/images/tallow-butter.jpg",
-      },
-      {
-        title: "11% OFF BLUE BOTTLES",
-        href: "https://bluebottlelove.com/?ref=840",
-        image: "/images/blue-bottles.png",
       },
     ],
   },
