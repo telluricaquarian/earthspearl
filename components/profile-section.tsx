@@ -16,7 +16,9 @@ export function ProfileSection({ name, bio, imageUrl }: ProfileSectionProps) {
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.96 }}
         transition={{ type: "spring", stiffness: 500, damping: 25 }}
-        className="relative"
+        className="relative img-protected"
+        onContextMenu={(e) => e.preventDefault()}
+        onDragStart={(e) => e.preventDefault()}
       >
         <div
           className="relative h-[104px] w-[104px] overflow-hidden rounded-full"
@@ -32,7 +34,13 @@ export function ProfileSection({ name, bio, imageUrl }: ProfileSectionProps) {
             `,
           }}
         >
-          <Image src={imageUrl || "/placeholder.svg"} alt={name} fill className="object-cover" priority />
+          <Image src={imageUrl || "/placeholder.svg"} alt={name} fill className="object-cover img-protected" priority />
+          {/* Transparent overlay — absorbs right-click/drag on the image surface */}
+          <div
+            className="absolute inset-0 z-10 rounded-full"
+            onContextMenu={(e) => e.preventDefault()}
+            onDragStart={(e) => e.preventDefault()}
+          />
         </div>
 
         {/* Subtle outer glow */}

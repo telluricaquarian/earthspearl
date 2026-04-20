@@ -45,11 +45,22 @@ export function LinkCard({ title, description, href, icon: Icon, image }: LinkCa
         }}
       >
         {image ? (
-          <img
-            src={image}
-            alt=""
-            className="h-full w-full object-cover"
-          />
+          <>
+            <img
+              src={image}
+              alt=""
+              className="h-full w-full object-cover img-protected"
+              draggable={false}
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
+            />
+            {/* Transparent overlay — absorbs right-click/drag on product thumbnails */}
+            <div
+              className="absolute inset-0 z-10"
+              onContextMenu={(e) => e.preventDefault()}
+              onDragStart={(e) => e.preventDefault()}
+            />
+          </>
         ) : Icon ? (
           <Icon className="h-5 w-5" strokeWidth={1.75} />
         ) : null}

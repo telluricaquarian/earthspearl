@@ -148,3 +148,11 @@
   from { transform: translateX(0); }
   to   { transform: translateX(-50%); }
 }
+
+/* Image-saving deterrence */
+.img-protected {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
