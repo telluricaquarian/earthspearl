@@ -16,7 +16,7 @@ const editorial = localFont({
 })
 
 const redaction = localFont({
-  src: "../public/Redaction70Italic-MV3Lv.otf",
+  src: "../public/Redaction10Italic-nRYrO.otf",
   variable: "--font-redaction",
   display: "swap",
 })
