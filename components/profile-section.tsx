@@ -32,7 +32,9 @@ export function ProfileSection({ name, bio, imageUrl }: ProfileSectionProps) {
             `,
           }}
         >
-          <Image src={imageUrl || "/placeholder.svg"} alt={name} fill className="object-cover" priority />
+          <div className="absolute inset-3">
+            <Image src={imageUrl || "/placeholder.svg"} alt={name} fill className="object-contain" priority />
+          </div>
         </div>
 
         {/* Subtle outer glow */}
