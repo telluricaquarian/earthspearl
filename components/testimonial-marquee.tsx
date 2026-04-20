@@ -8,14 +8,14 @@ const testimonials = [
   "I cracked open the new jar the other week and it is BLESSED!!! sooo creamy and moisturizing I honestly rly love the tallow need it 4ever",
 ]
 
-const separator = <span className="mx-4 text-white/20 text-[10px] select-none">🐚</span>
+const separator = <span className="mx-6 text-white/35 text-[11px] select-none">🐚</span>
 
 export function TestimonialMarquee() {
   const track = [...testimonials, ...testimonials]
 
   return (
-    <div className="mb-4">
-      <p className="text-[9px] uppercase tracking-[0.2em] text-white/25 px-1 mb-2.5">
+    <div className="mb-5">
+      <p className="text-[10px] uppercase tracking-[0.18em] text-white/40 px-1 mb-3">
         what customers are saying
       </p>
 
@@ -39,7 +39,7 @@ export function TestimonialMarquee() {
           {track.map((text, i) => (
             <span key={i} className="flex items-center flex-shrink-0">
               <span
-                className="text-[12px] text-white/65 whitespace-nowrap"
+                className="text-[13px] text-white/75 whitespace-nowrap"
                 style={{ fontFamily: "var(--font-editorial)", fontStyle: "italic" }}
               >
                 &ldquo;{text}&rdquo;

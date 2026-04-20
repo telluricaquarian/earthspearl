@@ -19,7 +19,7 @@ export function ProfileSection({ name, bio, imageUrl }: ProfileSectionProps) {
         className="relative"
       >
         <div
-          className="relative h-24 w-24 overflow-hidden rounded-full"
+          className="relative h-[104px] w-[104px] overflow-hidden rounded-full"
           style={{
             background: "rgba(255, 255, 255, 0.5)",
             backdropFilter: "blur(10px)",

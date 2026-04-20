@@ -230,14 +230,11 @@ export function LinkBioPage() {
         <motion.div className="py-8 space-y-8" variants={containerVariants}>
           {sections.map((section) => (
             <motion.div key={section.label} variants={itemVariants}>
-              <div className="mb-3 px-1">
-                <p className="text-[10px] uppercase tracking-[0.18em] font-medium text-white/40">
+              <div className="mb-4 px-1">
+                <p className="text-[11px] uppercase tracking-[0.15em] font-semibold text-white/65">
                   {section.label}
                 </p>
-                <p
-                  className="text-[11px] text-white/25 mt-0.5"
-                  style={{ fontFamily: "var(--font-editorial)", fontStyle: "italic" }}
-                >
+                <p className="text-[12px] text-white/40 mt-1">
                   {section.subtext}
                 </p>
               </div>
