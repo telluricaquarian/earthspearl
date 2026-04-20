@@ -4,38 +4,38 @@ import { motion } from "framer-motion"
 import { ProfileSection } from "./profile-section"
 import { LinkCard } from "./link-card"
 import { SocialFooter } from "./social-footer"
-import { Microscope, Droplets, Filter, ShoppingBag, Tag } from "lucide-react"
+import { Microscope, Droplets } from "lucide-react"
 
 const links = [
   {
     title: "ELECTROLYZED REDUCED WATER RESEARCH",
     description: "",
-    href: "#",
+    href: "https://hydrogenstudies.com/",
     icon: Microscope,
   },
   {
     title: "FREE WHATS IN YOUR WATER TEST",
     description: "",
-    href: "#",
+    href: "https://www.ewg.org/tapwater/",
     icon: Droplets,
   },
   {
     title: "NSF WATER FILTER ($30 off with this link)",
     description: "",
-    href: "#",
-    icon: Filter,
+    href: "https://www.multipure.com/products/drinking-water-systems/aquaperform/?coupon=435441",
+    image: "/images/nsf-water-filter.jpg",
   },
   {
     title: "HOMEMADE TALLOW BUTTERS",
     description: "",
-    href: "#",
-    icon: ShoppingBag,
+    href: "http://earthspearlll.weebly.com/store/p109/earthspearlll.tallowbutter.html",
+    image: "/images/tallow-butter.jpg",
   },
   {
     title: "11% OFF BLUE BOTTLES",
     description: "",
-    href: "#",
-    icon: Tag,
+    href: "https://bluebottlelove.com/?ref=840",
+    image: "/images/blue-bottles.png",
   },
 ]
 

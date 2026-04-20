@@ -7,10 +7,11 @@ interface LinkCardProps {
   title: string
   description?: string
   href: string
-  icon: LucideIcon
+  icon?: LucideIcon
+  image?: string
 }
 
-export function LinkCard({ title, description, href, icon: Icon }: LinkCardProps) {
+export function LinkCard({ title, description, href, icon: Icon, image }: LinkCardProps) {
   return (
     <motion.a
       href={href}
@@ -82,7 +83,7 @@ export function LinkCard({ title, description, href, icon: Icon }: LinkCardProps
       />
 
       <div
-        className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl text-gray-700"
+        className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden text-gray-700"
         style={{
           background: "rgba(255, 255, 255, 0.8)",
           boxShadow: `
@@ -94,7 +95,15 @@ export function LinkCard({ title, description, href, icon: Icon }: LinkCardProps
           border: "1px solid rgba(255, 255, 255, 0.6)",
         }}
       >
-        <Icon className="h-5 w-5" strokeWidth={1.75} />
+        {image ? (
+          <img
+            src={image}
+            alt=""
+            className="h-full w-full object-cover"
+          />
+        ) : Icon ? (
+          <Icon className="h-5 w-5" strokeWidth={1.75} />
+        ) : null}
       </div>
 
       <div className="relative flex-1 min-w-0">
