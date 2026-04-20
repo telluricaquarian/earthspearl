@@ -195,21 +195,26 @@ export function LinkBioPage() {
         }}
       />
 
-      {/* Primary organic grain — earthy coarse texture */}
+      {/* Primary grain — large-canvas, no tiling, softened */}
       <div
         className="pointer-events-none fixed inset-0 z-[2]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.62' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g1)'/%3E%3C/svg%3E")`,
-          opacity: 0.06,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 800 800' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g1'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.55' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g1)'/%3E%3C/svg%3E")`,
+          backgroundSize: "100% 100%",
+          backgroundRepeat: "no-repeat",
+          opacity: 0.045,
+          filter: "blur(0.4px)",
         }}
       />
 
-      {/* Fine film grain — secondary pass for layered tactile depth */}
+      {/* Fine grain — viewport-fill, ultra-low opacity depth pass */}
       <div
         className="pointer-events-none fixed inset-0 z-[3]"
         style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 128 128' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g2)'/%3E%3C/svg%3E")`,
-          opacity: 0.032,
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 600 600' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g2)'/%3E%3C/svg%3E")`,
+          backgroundSize: "100% 100%",
+          backgroundRepeat: "no-repeat",
+          opacity: 0.022,
         }}
       />
 
