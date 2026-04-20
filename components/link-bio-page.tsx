@@ -69,13 +69,18 @@ const itemVariants = {
 export function LinkBioPage() {
   return (
     <main className="relative min-h-screen px-6 py-10 flex flex-col overflow-hidden">
-      <div className="fixed inset-0 z-0 bg-gradient-to-br from-slate-50 via-white to-slate-100" />
+      {/* Base background — deep warm brown */}
+      <div
+        className="fixed inset-0 z-0"
+        style={{ background: "linear-gradient(135deg, #271508 0%, #3B200B 55%, #4A2A10 100%)" }}
+      />
 
       {/* Animated gradient orbs */}
+      {/* Orb 1 — warm amber, top-left */}
       <motion.div
         className="fixed z-0 w-[500px] h-[500px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(147, 51, 234, 0.25) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(210, 130, 45, 0.28) 0%, transparent 70%)",
           filter: "blur(60px)",
           top: "-10%",
           left: "-10%",
@@ -92,10 +97,11 @@ export function LinkBioPage() {
         }}
       />
 
+      {/* Orb 2 — warm copper, right */}
       <motion.div
         className="fixed z-0 w-[600px] h-[600px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(236, 72, 153, 0.2) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(180, 85, 35, 0.22) 0%, transparent 70%)",
           filter: "blur(80px)",
           top: "30%",
           right: "-20%",
@@ -112,10 +118,11 @@ export function LinkBioPage() {
         }}
       />
 
+      {/* Orb 3 — deep terracotta, bottom */}
       <motion.div
         className="fixed z-0 w-[450px] h-[450px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(155, 65, 25, 0.2) 0%, transparent 70%)",
           filter: "blur(70px)",
           bottom: "-5%",
           left: "20%",
@@ -132,10 +139,11 @@ export function LinkBioPage() {
         }}
       />
 
+      {/* Orb 4 — soft gold, left */}
       <motion.div
         className="fixed z-0 w-[350px] h-[350px] rounded-full"
         style={{
-          background: "radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(225, 165, 55, 0.14) 0%, transparent 70%)",
           filter: "blur(50px)",
           top: "60%",
           left: "-5%",
@@ -152,14 +160,15 @@ export function LinkBioPage() {
         }}
       />
 
+      {/* Animated shifting ellipses — warm highlight wash */}
       <motion.div
         className="fixed inset-0 z-0 pointer-events-none opacity-60"
         animate={{
           background: [
-            "radial-gradient(ellipse 80% 60% at 20% 30%, rgba(255,255,255,0.6), transparent 50%), radial-gradient(ellipse 60% 80% at 80% 70%, rgba(255,255,255,0.4), transparent 50%)",
-            "radial-gradient(ellipse 80% 60% at 50% 20%, rgba(255,255,255,0.6), transparent 50%), radial-gradient(ellipse 60% 80% at 30% 80%, rgba(255,255,255,0.4), transparent 50%)",
-            "radial-gradient(ellipse 80% 60% at 80% 40%, rgba(255,255,255,0.6), transparent 50%), radial-gradient(ellipse 60% 80% at 60% 60%, rgba(255,255,255,0.4), transparent 50%)",
-            "radial-gradient(ellipse 80% 60% at 20% 30%, rgba(255,255,255,0.6), transparent 50%), radial-gradient(ellipse 60% 80% at 80% 70%, rgba(255,255,255,0.4), transparent 50%)",
+            "radial-gradient(ellipse 80% 60% at 20% 30%, rgba(255,200,120,0.07), transparent 50%), radial-gradient(ellipse 60% 80% at 80% 70%, rgba(255,180,80,0.05), transparent 50%)",
+            "radial-gradient(ellipse 80% 60% at 50% 20%, rgba(255,200,120,0.07), transparent 50%), radial-gradient(ellipse 60% 80% at 30% 80%, rgba(255,180,80,0.05), transparent 50%)",
+            "radial-gradient(ellipse 80% 60% at 80% 40%, rgba(255,200,120,0.07), transparent 50%), radial-gradient(ellipse 60% 80% at 60% 60%, rgba(255,180,80,0.05), transparent 50%)",
+            "radial-gradient(ellipse 80% 60% at 20% 30%, rgba(255,200,120,0.07), transparent 50%), radial-gradient(ellipse 60% 80% at 80% 70%, rgba(255,180,80,0.05), transparent 50%)",
           ],
         }}
         transition={{
@@ -169,12 +178,13 @@ export function LinkBioPage() {
         }}
       />
 
+      {/* Diagonal light-sweep shimmer */}
       <motion.div
         className="fixed z-0 pointer-events-none"
         style={{
           width: "200%",
           height: "100px",
-          background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)",
+          background: "linear-gradient(90deg, transparent, rgba(255,210,150,0.08), transparent)",
           transform: "rotate(-35deg)",
           top: "20%",
           left: "-50%",
