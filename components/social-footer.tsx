@@ -74,7 +74,7 @@ export function SocialFooter() {
         ))}
       </div>
 
-      <p className="text-[11px] text-gray-400">© 2026 jayla.cross</p>
+      <p className="text-[11px] text-gray-400">© 2026 Earths Pearl</p>
     </div>
   )
 }
