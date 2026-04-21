@@ -5,6 +5,7 @@ import { ProfileSection } from "./profile-section"
 import { LinkCard } from "./link-card"
 import { SocialFooter } from "./social-footer"
 import { TestimonialMarquee } from "./testimonial-marquee"
+import PremiumGrainBackground from "./ui/premium-grain-background"
 import { Microscope, Droplets } from "lucide-react"
 
 const sections = [
@@ -76,100 +77,8 @@ const itemVariants = {
 
 export function LinkBioPage() {
   return (
-    <main className="relative min-h-screen px-6 py-10 flex flex-col overflow-hidden">
-      {/* Base — warm paper ground, lighter center radiates outward to deep edges */}
-      <div
-        className="fixed inset-0 z-0"
-        style={{
-          background: "radial-gradient(ellipse 140% 100% at 50% 38%, #4D2410 0%, #3B200B 48%, #1F0B04 100%)",
-        }}
-      />
-
-      {/* Blob A — large warm sienna atmosphere, drifts slowly from top-left */}
-      <motion.div
-        className="fixed z-0 pointer-events-none"
-        style={{
-          width: "140vw",
-          height: "140vw",
-          background: "radial-gradient(circle, rgba(148, 68, 20, 0.38) 0%, transparent 60%)",
-          filter: "blur(90px)",
-          top: "-35%",
-          left: "-30%",
-        }}
-        animate={{
-          x: [0, 70, 25, 0],
-          y: [0, 55, 110, 0],
-        }}
-        transition={{
-          duration: 55,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-      />
-
-      {/* Blob B — deep ochre pool, drifts slowly from bottom-right */}
-      <motion.div
-        className="fixed z-0 pointer-events-none"
-        style={{
-          width: "130vw",
-          height: "130vw",
-          background: "radial-gradient(circle, rgba(110, 50, 16, 0.35) 0%, transparent 58%)",
-          filter: "blur(110px)",
-          bottom: "-35%",
-          right: "-30%",
-        }}
-        animate={{
-          x: [0, -55, -18, 0],
-          y: [0, -45, -95, 0],
-        }}
-        transition={{
-          duration: 65,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-      />
-
-      {/* Blob C — soft amber center warmth, breathes slowly */}
-      <motion.div
-        className="fixed z-0 pointer-events-none"
-        style={{
-          width: "80vw",
-          height: "80vw",
-          background: "radial-gradient(circle, rgba(182, 100, 32, 0.14) 0%, transparent 65%)",
-          filter: "blur(75px)",
-          top: "8%",
-          left: "10%",
-        }}
-        animate={{
-          scale: [1, 1.08, 0.96, 1],
-          y: [0, -25, 18, 0],
-        }}
-        transition={{
-          duration: 38,
-          repeat: Number.POSITIVE_INFINITY,
-          ease: "easeInOut",
-        }}
-      />
-
-      {/* Vignette — soft warm framing, lighter than before */}
-      <div
-        className="pointer-events-none fixed inset-0 z-[1]"
-        style={{
-          background: "radial-gradient(ellipse 130% 105% at 50% 46%, transparent 32%, rgba(8, 3, 1, 0.45) 100%)",
-        }}
-      />
-
-      {/* Paper texture — single pass, near-invisible, purely tactile */}
-      <div
-        className="pointer-events-none fixed inset-0 z-[2]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 900 900' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.45' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E")`,
-          backgroundSize: "100% 100%",
-          backgroundRepeat: "no-repeat",
-          opacity: 0.02,
-          filter: "blur(0.6px)",
-        }}
-      />
+    <main className="relative min-h-screen px-6 py-10 flex flex-col">
+      <PremiumGrainBackground />
 
       <motion.div
         initial="hidden"
