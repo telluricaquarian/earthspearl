@@ -65,33 +65,37 @@ const fragmentShader = `
 
     // ── Animated light positions ──────────────────────────────────────────────
     //
-    // Primary glow: slow lemniscate — horizontal sweep dominant.
-    // Period ≈ 31 s in X, 48 s in Y.  Clearly perceptible, never distracting.
+    // Primary glow: slow lemniscate — horizontal sweep, floats above centre.
+    // p.y offset +0.10 → uv.y ≈ 0.60, ranging up to 0.21 (upper-mid field).
     float ta = t * 0.20;
     vec2  posA = vec2(
       sin(ta)        * 0.17,
-      sin(ta * 0.65) * 0.11 - 0.07
+      sin(ta * 0.65) * 0.11 + 0.10
     );
 
-    // Secondary glow: slower counter-movement, floats higher.
-    // Period ≈ 52 s in X.  Creates parallax depth with primary.
+    // Secondary glow: slower counter-movement, upper quadrant.
     float tb = t * 0.12;
     vec2  posB = vec2(
-      cos(tb + 1.1)       * 0.22,
-      sin(tb * 0.75 + 2.3) * 0.13 + 0.12
+      cos(tb + 1.1)        * 0.22,
+      sin(tb * 0.75 + 2.3) * 0.13 + 0.15
     );
 
-    // Deep anchor: very slow, lower half — keeps bottom warm and alive.
+    // Lower anchor: very slow — keeps the lower field warm without dominating.
     float tc = t * 0.07;
     vec2  posC = vec2(
       sin(tc + 0.5) * 0.14,
-      cos(tc * 1.2) * 0.10 - 0.20
+      cos(tc * 1.2) * 0.08 - 0.14
     );
 
+    // Static upper-field ambient — guarantees warmth in the top region at all
+    // times, independent of where the animated zones happen to be.
+    vec2  posTop = vec2(0.0, 0.22);
+
     // ── Light intensities (Gaussian falloff) ──────────────────────────────────
-    float glowA = glow(p, posA, 6.2);          // primary — crisp, warm centre
-    float glowB = glow(p, posB, 3.0) * 0.52;  // secondary — broader, dimmer
-    float glowC = glow(p, posC, 2.8) * 0.38;  // anchor — wide, very subtle
+    float glowA   = glow(p, posA,   6.2);            // primary — crisp, warm centre
+    float glowB   = glow(p, posB,   3.0) * 0.60;    // secondary — broader, upper field
+    float glowC   = glow(p, posC,   2.6) * 0.32;    // anchor — lower warmth, subtle
+    float glowTop = glow(p, posTop, 3.2) * 0.44;    // static upper ambient
 
     // ── Surface texture: fbm as breath, not as structure ──────────────────────
     // Drifts at 0.007 × time — imperceptibly slow, organic only
@@ -108,30 +112,36 @@ const fragmentShader = `
     // ── Color assembly ────────────────────────────────────────────────────────
     vec3 color = deepBrown;
 
+    // Static upper ambient: coreBrown base so top is never dead
+    color = mix(color, coreBrown, glowTop);
+
     // Primary light zone: deepBrown → warmAmber, caramel at hot centre
     color = mix(color, warmAmber, glowA * 0.88);
     color = mix(color, caramel,   glowA * glowA * 0.58);
 
-    // Secondary zone: lifts field to coreBrown (no amber — avoids muddying)
-    color = mix(color, coreBrown, glowB);
+    // Secondary zone: warms upper field to warmAmber (softer than primary)
+    color = mix(color, warmAmber, glowB * 0.65);
 
-    // Deep anchor: coreBrown warmth in lower region
+    // Lower anchor: coreBrown warmth — keeps bottom alive, never dominant
     color = mix(color, coreBrown, glowC);
 
     // Surface breath: very subtle noise lift/dip in coreBrown space
     color += coreBrown * texMod;
     color  = clamp(color, darkBase, caramel + 0.04);
 
-    // ── Vignette — elliptical, strong edge darkening ──────────────────────────
-    // Slightly taller than wide so portrait screens feel grounded
-    float vigDist  = length((uv - 0.5) * vec2(1.0, 0.82));
-    float vignette = 1.0 - smoothstep(0.22, 0.92, vigDist * 1.65);
-    vignette       = pow(vignette, 1.5);
-    color          = mix(darkBase * 0.50, color, vignette);
+    // ── Vignette — soft elliptical edge darkening ────────────────────────────
+    // Wider smoothstep range + lower power = much softer falloff.
+    // darkBase * 0.72 (not 0.50) ensures shadow floor is visible brown, not black.
+    float vigDist  = length((uv - 0.5) * vec2(1.0, 0.88));
+    float vignette = 1.0 - smoothstep(0.30, 1.15, vigDist * 1.30);
+    vignette       = pow(vignette, 1.1);
+    color          = mix(darkBase * 0.72, color, vignette);
 
-    // ── Fixed soft top-centre warmth — ambient feminine light from above ──────
-    float topBloom = exp(-pow((uv.x - 0.5) * 3.1, 2.0)) * pow(1.0 - uv.y, 1.4);
-    color          = mix(color, warmAmber, topBloom * 0.10);
+    // ── Top-centre warmth — ambient light falling from above ─────────────────
+    // uv.y = 1 at TOP in WebGL (gl_FragCoord.y counts up from bottom).
+    // pow(uv.y, ...) is max at the top and zero at the bottom — correct.
+    float topBloom = exp(-pow((uv.x - 0.5) * 2.6, 2.0)) * pow(uv.y, 1.2);
+    color          = mix(color, warmAmber, topBloom * 0.20);
 
     gl_FragColor = vec4(color, 1.0);
   }
