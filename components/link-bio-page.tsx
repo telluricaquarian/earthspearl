@@ -5,7 +5,7 @@ import { ProfileSection } from "./profile-section"
 import { LinkCard } from "./link-card"
 import { SocialFooter } from "./social-footer"
 import { TestimonialMarquee } from "./testimonial-marquee"
-import PremiumGrainBackground from "./ui/premium-grain-background"
+import EarthsPearlBackground from "./ui/earths-pearl-background"
 import { Microscope, Droplets } from "lucide-react"
 
 const sections = [
@@ -78,7 +78,7 @@ const itemVariants = {
 export function LinkBioPage() {
   return (
     <main className="relative min-h-screen px-6 py-10 flex flex-col">
-      <PremiumGrainBackground />
+      <EarthsPearlBackground />
 
       <motion.div
         initial="hidden"
