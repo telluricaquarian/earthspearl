@@ -16,77 +16,122 @@ const fragmentShader = `
   uniform float uTime;
   uniform vec2  uResolution;
 
+  // ── Noise helpers (used only for subtle surface texture) ──────────────────
+
   float hash(vec2 p) {
     p = fract(p * vec2(127.34, 311.78));
     p += dot(p, p + 48.23);
     return fract(p.x * p.y);
   }
 
-  float smoothNoise(vec2 p) {
+  float noise(vec2 p) {
     vec2 i = floor(p);
     vec2 f = fract(p);
-    f = f * f * f * (f * (f * 6.0 - 15.0) + 10.0);
+    f = f * f * (3.0 - 2.0 * f);
     return mix(
-      mix(hash(i),                hash(i + vec2(1.0, 0.0)), f.x),
+      mix(hash(i),              hash(i + vec2(1.0, 0.0)), f.x),
       mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), f.x),
       f.y
     );
   }
 
-  float fbm(vec2 p) {
-    float v   = 0.0;
-    float amp = 0.5;
-    mat2  m   = mat2(1.6,  1.2, -1.2, 1.6);
-    for (int i = 0; i < 5; i++) {
-      v   += amp * smoothNoise(p);
-      p    = m * p;
-      amp *= 0.5;
+  // 3-octave fbm — kept light on purpose; used only as surface breath
+  float fbm3(vec2 p) {
+    float v = 0.0, a = 0.5;
+    for (int i = 0; i < 3; i++) {
+      v += a * noise(p);
+      p  = p * 2.1 + vec2(3.1, 1.7);
+      a *= 0.5;
     }
     return v;
   }
 
+  // ── Gaussian soft-light helper ─────────────────────────────────────────────
+
+  float glow(vec2 fragP, vec2 center, float spread) {
+    float d = length(fragP - center);
+    return exp(-d * d * spread);
+  }
+
+  // ── Main ───────────────────────────────────────────────────────────────────
+
   void main() {
     vec2  uv     = gl_FragCoord.xy / uResolution.xy;
     float aspect = uResolution.x / uResolution.y;
-    float t      = uTime * 0.016;
+    float t      = uTime;
 
-    vec2 p = (uv - 0.5) * vec2(aspect, 1.0) * 2.4;
+    // Aspect-corrected centered coords — circles stay circular at any viewport
+    vec2 p = (uv - 0.5) * vec2(aspect, 1.0);
 
-    // Two-stage domain warp — creates organic, paper-like depth
-    vec2 q = vec2(
-      fbm(p + t * vec2( 0.8,  0.6)),
-      fbm(p + t * vec2(-0.5,  0.9) + vec2(3.2, 1.7))
+    // ── Animated light positions ──────────────────────────────────────────────
+    //
+    // Primary glow: slow lemniscate — horizontal sweep dominant.
+    // Period ≈ 31 s in X, 48 s in Y.  Clearly perceptible, never distracting.
+    float ta = t * 0.20;
+    vec2  posA = vec2(
+      sin(ta)        * 0.17,
+      sin(ta * 0.65) * 0.11 - 0.07
     );
-    vec2 r = vec2(
-      fbm(p + q * 1.15 + t * 0.35 + vec2(1.7, 9.2)),
-      fbm(p + q * 0.90 - t * 0.28 + vec2(8.3, 2.8))
+
+    // Secondary glow: slower counter-movement, floats higher.
+    // Period ≈ 52 s in X.  Creates parallax depth with primary.
+    float tb = t * 0.12;
+    vec2  posB = vec2(
+      cos(tb + 1.1)       * 0.22,
+      sin(tb * 0.75 + 2.3) * 0.13 + 0.12
     );
 
-    float f = fbm(p + r * 0.9);
+    // Deep anchor: very slow, lower half — keeps bottom warm and alive.
+    float tc = t * 0.07;
+    vec2  posC = vec2(
+      sin(tc + 0.5) * 0.14,
+      cos(tc * 1.2) * 0.10 - 0.20
+    );
 
-    // Earths Pearl brown palette
-    vec3 darkBase  = vec3(0.141, 0.071, 0.031); // #241208
-    vec3 coreBrown = vec3(0.231, 0.125, 0.043); // #3B200B
-    vec3 warmAmber = vec3(0.416, 0.204, 0.086); // #6A3416
-    vec3 caramel   = vec3(0.541, 0.290, 0.133); // #8A4A22
-    vec3 creamHaze = vec3(0.957, 0.906, 0.847); // #F4E7D8
+    // ── Light intensities (Gaussian falloff) ──────────────────────────────────
+    float glowA = glow(p, posA, 6.2);          // primary — crisp, warm centre
+    float glowB = glow(p, posB, 3.0) * 0.52;  // secondary — broader, dimmer
+    float glowC = glow(p, posC, 2.8) * 0.38;  // anchor — wide, very subtle
 
-    // Soft graduated color blend driven by fbm depth
-    vec3 color = darkBase;
-    color = mix(color, coreBrown, smoothstep(0.22, 0.52, f));
-    color = mix(color, warmAmber, smoothstep(0.44, 0.70, f) * 0.68);
-    color = mix(color, caramel,   smoothstep(0.58, 0.80, f) * 0.40);
-    color = mix(color, creamHaze, smoothstep(0.70, 0.88, f) * 0.13);
+    // ── Surface texture: fbm as breath, not as structure ──────────────────────
+    // Drifts at 0.007 × time — imperceptibly slow, organic only
+    float tex    = fbm3(uv * 1.5 + t * 0.007);
+    float texMod = (tex - 0.5) * 0.09;  // ± 4.5 % — barely visible
 
-    // Radial vignette — deepens edges, pulls eye to center
-    float dist     = length(uv - 0.5) * 1.55;
-    float vignette = 1.0 - smoothstep(0.28, 1.05, dist);
-    vignette       = pow(vignette, 1.3);
-    color          = mix(darkBase * 0.65, color, vignette);
+    // ── Earths Pearl brown palette ─────────────────────────────────────────────
+    vec3 darkBase  = vec3(0.086, 0.043, 0.024); // #160B06  — deepest shadow
+    vec3 deepBrown = vec3(0.141, 0.071, 0.031); // #241208  — base field
+    vec3 coreBrown = vec3(0.231, 0.125, 0.043); // #3B200B  — mid lift
+    vec3 warmAmber = vec3(0.416, 0.204, 0.086); // #6A3416  — glow field
+    vec3 caramel   = vec3(0.541, 0.290, 0.133); // #8A4A22  — glow peak
 
-    // Soft cream breath from top-center — feminine warmth
-    float topBloom = (1.0 - uv.y) * exp(-pow((uv.x - 0.5) * 3.2, 2.0));
-    color += creamHaze * topBloom * 0.055;
+    // ── Color assembly ────────────────────────────────────────────────────────
+    vec3 color = deepBrown;
+
+    // Primary light zone: deepBrown → warmAmber, caramel at hot centre
+    color = mix(color, warmAmber, glowA * 0.88);
+    color = mix(color, caramel,   glowA * glowA * 0.58);
+
+    // Secondary zone: lifts field to coreBrown (no amber — avoids muddying)
+    color = mix(color, coreBrown, glowB);
+
+    // Deep anchor: coreBrown warmth in lower region
+    color = mix(color, coreBrown, glowC);
+
+    // Surface breath: very subtle noise lift/dip in coreBrown space
+    color += coreBrown * texMod;
+    color  = clamp(color, darkBase, caramel + 0.04);
+
+    // ── Vignette — elliptical, strong edge darkening ──────────────────────────
+    // Slightly taller than wide so portrait screens feel grounded
+    float vigDist  = length((uv - 0.5) * vec2(1.0, 0.82));
+    float vignette = 1.0 - smoothstep(0.22, 0.92, vigDist * 1.65);
+    vignette       = pow(vignette, 1.5);
+    color          = mix(darkBase * 0.50, color, vignette);
+
+    // ── Fixed soft top-centre warmth — ambient feminine light from above ──────
+    float topBloom = exp(-pow((uv.x - 0.5) * 3.1, 2.0)) * pow(1.0 - uv.y, 1.4);
+    color          = mix(color, warmAmber, topBloom * 0.10);
 
     gl_FragColor = vec4(color, 1.0);
   }
