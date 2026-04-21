@@ -15,6 +15,12 @@ const editorial = localFont({
   display: "swap",
 })
 
+const earthTone = localFont({
+  src: "../public/EarthTone-Regular.ttf",
+  variable: "--font-earthtone",
+  display: "swap",
+})
+
 
 export const metadata: Metadata = {
   title: "Earths Pearl",
@@ -56,7 +62,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} ${editorial.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${inter.className} ${editorial.variable} ${earthTone.variable} font-sans antialiased`}>{children}</body>
     </html>
   )
 }

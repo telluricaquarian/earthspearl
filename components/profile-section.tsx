@@ -54,7 +54,18 @@ export function ProfileSection({ name, bio, imageUrl }: ProfileSectionProps) {
 
       </motion.div>
 
-      <h1 className="mt-5 text-xl font-semibold tracking-tight text-white">{name}</h1>
+      <p
+        className="mt-5 text-[10px] text-center whitespace-nowrap"
+        style={{
+          fontFamily: "var(--font-earthtone)",
+          color: "rgba(255, 255, 255, 0.52)",
+          letterSpacing: "0.06em",
+        }}
+      >
+        E A R T H S&nbsp;&nbsp;P E A R L
+      </p>
+
+      <h1 className="mt-1 text-xl font-semibold tracking-tight text-white">{name}</h1>
       <p className="mt-2 text-sm" style={{ color: "rgba(255, 255, 255, 0.85)" }}>{bio}</p>
     </div>
   )
