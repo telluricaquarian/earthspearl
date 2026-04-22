@@ -19,17 +19,18 @@ export function LinkCard({ title, description, href, icon: Icon, image }: LinkCa
       rel="noopener noreferrer"
       className="group relative flex w-full items-center gap-4 rounded-[20px] px-4 py-4 overflow-hidden"
       style={{
-        background: "linear-gradient(180deg, #FFFFFF 0%, #F7F7F7 100%)",
-        boxShadow: "0 6px 20px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.05)",
-        border: "1px solid rgba(255, 255, 255, 0.15)",
+        /* Warm amber-stone surface: cream highlight → soft mineral mid-tone */
+        background: "linear-gradient(160deg, #FEFAF4 0%, #F5E9D4 65%, #EFE0C4 100%)",
+        boxShadow: "0 6px 20px rgba(80, 40, 10, 0.24), inset 0 1px 0 rgba(255, 248, 235, 0.9), inset 0 -1px 0 rgba(180, 120, 50, 0.08)",
+        border: "1px solid rgba(195, 140, 65, 0.22)",
       }}
       whileHover={{
         y: -2,
-        boxShadow: "0 10px 28px rgba(0, 0, 0, 0.32), inset 0 1px 0 rgba(255,255,255,0.05)",
+        boxShadow: "0 10px 28px rgba(80, 40, 10, 0.32), inset 0 1px 0 rgba(255, 248, 235, 0.9), inset 0 -1px 0 rgba(180, 120, 50, 0.08)",
       }}
       whileTap={{
         y: 0,
-        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.05)",
+        boxShadow: "0 4px 12px rgba(80, 40, 10, 0.18), inset 0 1px 0 rgba(255, 248, 235, 0.9)",
       }}
       transition={{
         type: "spring",
@@ -38,10 +39,10 @@ export function LinkCard({ title, description, href, icon: Icon, image }: LinkCa
       }}
     >
       <div
-        className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden text-gray-700"
+        className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-xl overflow-hidden text-amber-900"
         style={{
-          background: "#F2F2F2",
-          border: "1px solid rgba(0, 0, 0, 0.06)",
+          background: "#EDE2CA",
+          border: "1px solid rgba(195, 140, 65, 0.14)",
         }}
       >
         {image ? (
@@ -72,7 +73,8 @@ export function LinkCard({ title, description, href, icon: Icon, image }: LinkCa
       </div>
 
       <ChevronRight
-        className="relative h-5 w-5 text-gray-400 transition-all duration-200 group-hover:translate-x-0.5 group-hover:text-gray-600"
+        className="relative h-5 w-5 transition-all duration-200 group-hover:translate-x-0.5"
+        style={{ color: "rgba(155, 95, 35, 0.6)" }}
         strokeWidth={2}
       />
     </motion.a>

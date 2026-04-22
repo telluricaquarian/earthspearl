@@ -161,6 +161,14 @@ const fragmentShader = `
     color += coreBrown * modFine;
     color  = clamp(color, darkBase * 0.85, caramel + 0.06);
 
+    // ── Mineral strata — amber-marble experiment ───────────────────────────────
+    // Reuses texBroad (already computed) as a domain warp — zero extra fbm cost.
+    // Sine through the warped domain produces long flowing strata that read as
+    // polished dark mineral / amber stone rather than white-marble veining.
+    float stratum     = sin((uv.x * 2.8 + uv.y * 1.6 + texBroad * 3.4) * 2.2);
+    float mineralLine = smoothstep(0.86, 1.0, abs(stratum));
+    color = mix(color, warmAmber * 0.82, mineralLine * 0.042);
+
     // ── Vignette ──────────────────────────────────────────────────────────────
     float vigDist  = length((uv - 0.5) * vec2(1.0, 0.88));
     float vignette = 1.0 - smoothstep(0.30, 1.15, vigDist * 1.30);
