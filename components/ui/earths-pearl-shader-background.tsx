@@ -230,8 +230,10 @@ export default function EarthsPearlShaderBackground() {
       style={{
         position: "fixed",
         inset: 0,
-        zIndex: 0,
+        zIndex: 2,
         pointerEvents: "none",
+        /* 90% opacity lets the MeshGradient motion base (~10%) register underneath */
+        opacity: 0.9,
       }}
     >
       {/* Instant solid fallback shown before WebGL initialises */}
