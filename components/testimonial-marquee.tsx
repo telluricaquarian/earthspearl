@@ -39,8 +39,14 @@ export function TestimonialMarquee() {
           {track.map((text, i) => (
             <span key={i} className="flex items-center flex-shrink-0">
               <span
-                className="text-[13px] text-white/75 whitespace-nowrap"
-                style={{ fontFamily: "var(--font-editorial)", fontStyle: "italic" }}
+                className="text-[13px] whitespace-nowrap"
+                style={{
+                  color: "rgba(245, 234, 215, 0.84)",
+                  fontFamily: "inherit",
+                  fontStyle: "normal",
+                  fontWeight: 400,
+                  letterSpacing: "0.01em",
+                }}
               >
                 &ldquo;{text}&rdquo;
               </span>
