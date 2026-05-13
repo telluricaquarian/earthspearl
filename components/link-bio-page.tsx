@@ -6,9 +6,9 @@ import { Moon, Sun } from "lucide-react"
 import { ProfileSection } from "./profile-section"
 import { LinkCard } from "./link-card"
 import { EarthsPearlLoader } from "./earths-pearl-loader"
-import { FloatingShellSeal } from "./floating-shell-seal"
 import { SocialFooter } from "./social-footer"
 import { TestimonialMarquee } from "./testimonial-marquee"
+import { WaterTribeMissionPill } from "./water-tribe-mission-pill"
 import EarthsPearlShaderBackground from "./ui/earths-pearl-shader-background"
 import { ShaderBackdrop } from "./hero/ShaderBackdrop"
 
@@ -102,7 +102,6 @@ export function LinkBioPage() {
   return (
     <main className="relative min-h-screen px-6 py-10 flex flex-col">
       <EarthsPearlLoader />
-      <FloatingShellSeal />
 
       {/* z-0: MeshGradient organic motion base */}
       <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
@@ -156,6 +155,7 @@ export function LinkBioPage() {
             bio="🐚 helping women build sustainable businesses the feminine way"
             imageUrl="/earthspearldisplay.png"
           />
+          <WaterTribeMissionPill />
         </motion.div>
 
         <motion.div className="py-8 space-y-8" variants={containerVariants}>

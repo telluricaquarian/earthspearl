@@ -1,0 +1,140 @@
+"use client"
+
+export function WaterTribeMissionPill() {
+  return (
+    <div className="mt-5 flex justify-center px-1">
+      <button
+        type="button"
+        aria-label="Access Water Tribe Mission"
+        className="water-tribe-pill"
+      >
+        <span className="water-tribe-pill__ring" aria-hidden="true" />
+        <span className="water-tribe-pill__surface">
+          <img
+            src="/wtmb.png"
+            alt=""
+            aria-hidden="true"
+            draggable="false"
+            className="water-tribe-pill__icon img-protected"
+          />
+          <span className="water-tribe-pill__text">Access Water Tribe Mission</span>
+        </span>
+      </button>
+
+      <style jsx>{`
+        .water-tribe-pill {
+          position: relative;
+          display: inline-flex;
+          height: 46px;
+          max-width: 100%;
+          border: 0;
+          border-radius: 9999px;
+          padding: 0;
+          background: transparent;
+          color: #dce2ff;
+          cursor: default;
+          isolation: isolate;
+        }
+
+        .water-tribe-pill__ring {
+          position: absolute;
+          inset: 0;
+          border-radius: inherit;
+          background:
+            linear-gradient(
+              115deg,
+              rgba(220, 226, 255, 0.26),
+              rgba(126, 160, 199, 0.52),
+              rgba(245, 234, 215, 0.42),
+              rgba(196, 154, 108, 0.22),
+              rgba(220, 226, 255, 0.26)
+            );
+          background-size: 220% 220%;
+          box-shadow:
+            0 0 18px rgba(126, 160, 199, 0.12),
+            inset 0 0 0 1px rgba(245, 234, 215, 0.1);
+          animation: waterTribePillSheen 10s ease-in-out infinite;
+        }
+
+        .water-tribe-pill__surface {
+          position: relative;
+          z-index: 1;
+          display: flex;
+          height: calc(100% - 2px);
+          align-items: center;
+          gap: 10px;
+          margin: 1px;
+          border-radius: inherit;
+          padding: 0 18px 0 12px;
+          background: rgba(18, 13, 10, 0.72);
+          border: 1px solid rgba(245, 234, 215, 0.06);
+          box-shadow:
+            inset 0 1px 0 rgba(245, 234, 215, 0.09),
+            0 12px 24px rgba(13, 8, 5, 0.18);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+        }
+
+        .water-tribe-pill__icon {
+          height: 28px;
+          width: 28px;
+          flex: 0 0 auto;
+          object-fit: contain;
+          padding: 2px;
+        }
+
+        .water-tribe-pill__text {
+          color: #dce2ff;
+          font-size: 14px;
+          font-weight: 500;
+          letter-spacing: 0.01em;
+          line-height: 1;
+          white-space: nowrap;
+          text-shadow: 0 1px 10px rgba(220, 226, 255, 0.12);
+        }
+
+        .water-tribe-pill:focus-visible {
+          outline: 2px solid rgba(220, 226, 255, 0.66);
+          outline-offset: 3px;
+        }
+
+        @keyframes waterTribePillSheen {
+          0%,
+          100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
+        }
+
+        @media (max-width: 420px) {
+          .water-tribe-pill {
+            height: 44px;
+          }
+
+          .water-tribe-pill__surface {
+            gap: 9px;
+            padding: 0 15px 0 10px;
+          }
+
+          .water-tribe-pill__icon {
+            height: 26px;
+            width: 26px;
+          }
+
+          .water-tribe-pill__text {
+            font-size: 13.5px;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .water-tribe-pill__ring {
+            animation: none;
+            background-position: 50% 50%;
+          }
+        }
+      `}</style>
+    </div>
+  )
+}
