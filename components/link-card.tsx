@@ -30,7 +30,7 @@ const cardStyles = {
   dark: {
     background: "linear-gradient(160deg, #21160F 0%, #17110D 62%, #100B08 100%)",
     boxShadow: "0 10px 28px rgba(16, 9, 5, 0.32), inset 0 1px 0 rgba(245, 234, 215, 0.08), inset 0 -1px 0 rgba(196, 154, 108, 0.08)",
-    border: "1px solid rgba(245, 234, 215, 0.18)",
+    border: "1px solid rgba(245, 234, 215, 0.5)",
     hoverShadow: "0 14px 34px rgba(16, 9, 5, 0.42), inset 0 1px 0 rgba(245, 234, 215, 0.12), inset 0 -1px 0 rgba(196, 154, 108, 0.12)",
     tapShadow: "0 6px 18px rgba(16, 9, 5, 0.28), inset 0 1px 0 rgba(245, 234, 215, 0.1)",
     iconBackground: "rgba(245, 234, 215, 0.08)",
