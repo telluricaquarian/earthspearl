@@ -6,6 +6,7 @@ import { Moon, Sun } from "lucide-react"
 import { ProfileSection } from "./profile-section"
 import { LinkCard } from "./link-card"
 import { EarthsPearlLoader } from "./earths-pearl-loader"
+import { FloatingShellSeal } from "./floating-shell-seal"
 import { SocialFooter } from "./social-footer"
 import { TestimonialMarquee } from "./testimonial-marquee"
 import EarthsPearlShaderBackground from "./ui/earths-pearl-shader-background"
@@ -101,6 +102,7 @@ export function LinkBioPage() {
   return (
     <main className="relative min-h-screen px-6 py-10 flex flex-col">
       <EarthsPearlLoader />
+      <FloatingShellSeal />
 
       {/* z-0: MeshGradient organic motion base */}
       <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
