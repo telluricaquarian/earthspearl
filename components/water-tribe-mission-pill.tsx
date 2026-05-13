@@ -10,13 +10,7 @@ export function WaterTribeMissionPill() {
       >
         <span className="water-tribe-pill__ring" aria-hidden="true" />
         <span className="water-tribe-pill__surface">
-          <img
-            src="/wtmb.png"
-            alt=""
-            aria-hidden="true"
-            draggable="false"
-            className="water-tribe-pill__icon img-protected"
-          />
+          <span className="water-tribe-pill__icon img-protected" aria-hidden="true" />
           <span className="water-tribe-pill__text">Access Water Tribe Mission</span>
         </span>
       </button>
@@ -31,7 +25,7 @@ export function WaterTribeMissionPill() {
           border-radius: 9999px;
           padding: 0;
           background: transparent;
-          color: #dce2ff;
+          color: #f5ead7;
           cursor: default;
           isolation: isolate;
         }
@@ -43,16 +37,16 @@ export function WaterTribeMissionPill() {
           background:
             linear-gradient(
               115deg,
-              rgba(220, 226, 255, 0.26),
-              rgba(126, 160, 199, 0.52),
-              rgba(245, 234, 215, 0.42),
-              rgba(196, 154, 108, 0.22),
-              rgba(220, 226, 255, 0.26)
+              rgba(245, 234, 215, 0.32),
+              rgba(245, 234, 215, 0.5),
+              rgba(203, 184, 158, 0.42),
+              rgba(196, 154, 108, 0.26),
+              rgba(245, 234, 215, 0.32)
             );
           background-size: 220% 220%;
           box-shadow:
-            0 0 18px rgba(126, 160, 199, 0.12),
-            inset 0 0 0 1px rgba(245, 234, 215, 0.1);
+            0 0 18px rgba(245, 234, 215, 0.1),
+            inset 0 0 0 1px rgba(245, 234, 215, 0.16);
           animation: waterTribePillSheen 10s ease-in-out infinite;
         }
 
@@ -79,22 +73,30 @@ export function WaterTribeMissionPill() {
           height: 28px;
           width: 28px;
           flex: 0 0 auto;
-          object-fit: contain;
           padding: 2px;
+          background: #f5ead7;
+          mask-image: url("/wtmb.png");
+          mask-position: center;
+          mask-repeat: no-repeat;
+          mask-size: contain;
+          -webkit-mask-image: url("/wtmb.png");
+          -webkit-mask-position: center;
+          -webkit-mask-repeat: no-repeat;
+          -webkit-mask-size: contain;
         }
 
         .water-tribe-pill__text {
-          color: #dce2ff;
+          color: #f5ead7;
           font-size: 14px;
           font-weight: 500;
           letter-spacing: 0.01em;
           line-height: 1;
           white-space: nowrap;
-          text-shadow: 0 1px 10px rgba(220, 226, 255, 0.12);
+          text-shadow: 0 1px 10px rgba(245, 234, 215, 0.1);
         }
 
         .water-tribe-pill:focus-visible {
-          outline: 2px solid rgba(220, 226, 255, 0.66);
+          outline: 2px solid rgba(245, 234, 215, 0.66);
           outline-offset: 3px;
         }
 
