@@ -60,13 +60,12 @@ export function WaterTribeMissionPill() {
           margin: 1px;
           border-radius: inherit;
           padding: 0 18px 0 12px;
-          background: rgba(18, 13, 10, 0.72);
-          border: 1px solid rgba(245, 234, 215, 0.06);
+          background: linear-gradient(160deg, #21160f 0%, #17110d 62%, #100b08 100%);
+          border: 1px solid rgba(245, 234, 215, 0.08);
           box-shadow:
-            inset 0 1px 0 rgba(245, 234, 215, 0.09),
-            0 12px 24px rgba(13, 8, 5, 0.18);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
+            0 10px 28px rgba(16, 9, 5, 0.32),
+            inset 0 1px 0 rgba(245, 234, 215, 0.08),
+            inset 0 -1px 0 rgba(196, 154, 108, 0.08);
         }
 
         .water-tribe-pill__icon {
