@@ -32,7 +32,7 @@ export function ShaderBackdrop() {
       ]}
       distortion={1.0}
       swirl={0.8}
-      speed={reduced ? 0 : 0.2}
+      speed={reduced ? 0 : 0.28}
       grainMixer={0}
       grainOverlay={0}
       style={{

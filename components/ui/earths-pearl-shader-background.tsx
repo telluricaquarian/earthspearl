@@ -74,27 +74,27 @@ const fragmentShader = `
     // ── FBM: two scales for layered surface variation ─────────────────────────
     //
     // Fine scale — organic glow-edge irregularity, fine surface breath
-    float texFine  = fbm3(uv * 1.6 + t * 0.006);
+    float texFine  = fbm3(uv * 1.6 + t * 0.008);
     float modFine  = (texFine  - 0.5) * 0.07;   // ± 3.5 %
     //
     // Broad scale — large material variation (left/right tonal drift).
     // At uv * 0.5, one noise cycle spans 2 screen-widths, so within a single
     // viewport the tonal shift is slow and non-repeating.
-    float texBroad = fbm3(uv * 0.50 + t * 0.004 + vec2(5.3, 2.1));
+    float texBroad = fbm3(uv * 0.50 + t * 0.0053 + vec2(5.3, 2.1));
     float modBroad = (texBroad - 0.5) * 0.11;   // ± 5.5 %
 
     // ── Animated glow positions ───────────────────────────────────────────────
     //
     // posA — primary, floats upper-mid, slow lemniscate path
-    float ta = t * 0.20;
+    float ta = t * 0.27;
     vec2  posA = vec2(sin(ta) * 0.17,  sin(ta * 0.65) * 0.11 + 0.10);
 
     // posB — secondary, upper quadrant, counter-drift to posA
-    float tb = t * 0.12;
+    float tb = t * 0.16;
     vec2  posB = vec2(cos(tb + 1.1) * 0.22, sin(tb * 0.75 + 2.3) * 0.13 + 0.15);
 
     // posC — lower anchor, keeps the lower field alive
-    float tc = t * 0.07;
+    float tc = t * 0.09;
     vec2  posC = vec2(sin(tc + 0.5) * 0.14, cos(tc * 1.2) * 0.08 - 0.14);
 
     // ── Light field construction — broad → specific ───────────────────────────
@@ -183,7 +183,7 @@ const fragmentShader = `
   }
 `;
 
-function ShaderPlane() {
+function ShaderPlane({ reducedMotion }: { reducedMotion: boolean }) {
   const matRef = useRef<THREE.ShaderMaterial>(null);
 
   const uniforms = useMemo(
@@ -196,7 +196,7 @@ function ShaderPlane() {
 
   useFrame((state) => {
     if (!matRef.current) return;
-    matRef.current.uniforms.uTime.value = state.clock.getElapsedTime();
+    matRef.current.uniforms.uTime.value = reducedMotion ? 0 : state.clock.getElapsedTime();
     matRef.current.uniforms.uResolution.value.set(
       state.size.width,
       state.size.height
@@ -220,9 +220,17 @@ function ShaderPlane() {
 
 export default function EarthsPearlShaderBackground() {
   const [mounted, setMounted] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+
+    const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
+    setReducedMotion(mq.matches);
+    const onChange = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mq.addEventListener("change", onChange);
+
+    return () => mq.removeEventListener("change", onChange);
   }, []);
 
   return (
@@ -252,7 +260,7 @@ export default function EarthsPearlShaderBackground() {
           dpr={[1, 1.5]}
           style={{ position: "absolute", inset: 0, width: "100%", height: "100%" }}
         >
-          <ShaderPlane />
+          <ShaderPlane reducedMotion={reducedMotion} />
         </Canvas>
       )}
     </div>
