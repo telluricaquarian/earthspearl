@@ -4,6 +4,7 @@ import { Inter } from "next/font/google"
 import localFont from "next/font/local"
 import "./globals.css"
 import { AnimatedGradient } from "@/components/ui/animated-gradient"
+import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -64,13 +65,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${editorial.variable} ${earthTone.variable} font-sans antialiased`}>
-        <div className="fixed inset-0 -z-10 pointer-events-none">
-          <AnimatedGradient
-            config={{ preset: "Oceanic" }}
-            noise={{ opacity: 0.25, scale: 1 }}
-          />
-        </div>
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
+          <div className="fixed inset-0 -z-10 pointer-events-none">
+            <AnimatedGradient
+              config={{ preset: "Oceanic" }}
+              noise={{ opacity: 0.25, scale: 1 }}
+            />
+          </div>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )
