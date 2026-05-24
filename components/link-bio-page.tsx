@@ -9,8 +9,6 @@ import { EarthsPearlLoader } from "./earths-pearl-loader"
 import { SocialFooter } from "./social-footer"
 import { TestimonialMarquee } from "./testimonial-marquee"
 import { WaterTribeMissionPill } from "./water-tribe-mission-pill"
-import EarthsPearlShaderBackground from "./ui/earths-pearl-shader-background"
-import { ShaderBackdrop } from "./hero/ShaderBackdrop"
 
 type CardMode = "light" | "dark"
 
@@ -102,26 +100,6 @@ export function LinkBioPage() {
   return (
     <main className="relative min-h-screen px-6 py-10 flex flex-col">
       <EarthsPearlLoader />
-
-      {/* z-0: MeshGradient organic motion base */}
-      <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none" }}>
-        <ShaderBackdrop />
-      </div>
-
-      {/* z-1: cream wash — damps the MeshGradient so the GLSL strata/vignette stays dominant */}
-      <div
-        aria-hidden
-        style={{
-          position: "fixed",
-          inset: 0,
-          zIndex: 1,
-          pointerEvents: "none",
-          background: "rgba(254, 250, 244, 0.35)",
-        }}
-      />
-
-      {/* z-2: existing amber GLSL treatment — strata, vignette, animated glows — at 90% opacity */}
-      <EarthsPearlShaderBackground />
 
       <motion.div
         initial="hidden"

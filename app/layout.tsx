@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
 import "./globals.css"
+import { AnimatedGradient } from "@/components/ui/animated-gradient"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -62,7 +63,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} ${editorial.variable} ${earthTone.variable} font-sans antialiased`}>{children}</body>
+      <body className={`${inter.className} ${editorial.variable} ${earthTone.variable} font-sans antialiased`}>
+        <div className="fixed inset-0 -z-10 pointer-events-none">
+          <AnimatedGradient
+            config={{ preset: "Oceanic" }}
+            noise={{ opacity: 0.25, scale: 1 }}
+          />
+        </div>
+        {children}
+      </body>
     </html>
   )
 }
