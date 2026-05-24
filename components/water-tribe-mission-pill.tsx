@@ -30,7 +30,7 @@ export function WaterTribeMissionPill({ mode = "light" }: { mode?: "light" | "da
           <span
             className="water-tribe-pill__icon img-protected"
             aria-hidden="true"
-            style={isLight ? { background: "#92400e" } : undefined}
+            style={isLight ? { background: "#000000" } : undefined}
           />
           <span
             className="water-tribe-pill__text"
