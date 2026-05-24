@@ -1,5 +1,8 @@
 "use client"
 
+import { useState } from "react"
+import { WaterTribeModal } from "./water-tribe-modal"
+
 const lightSurface = {
   background: "linear-gradient(160deg, #FEFAF4 0%, #F5E9D4 65%, #EFE0C4 100%)",
   border: "1px solid rgba(195, 140, 65, 0.22)",
@@ -16,14 +19,17 @@ const lightRing = {
 
 export function WaterTribeMissionPill({ mode = "light" }: { mode?: "light" | "dark" }) {
   const isLight = mode === "light"
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <div className="mt-5 flex justify-center px-1">
+      <WaterTribeModal open={modalOpen} onOpenChange={setModalOpen} />
       <button
         type="button"
         aria-label="Access Water Tribe Mission"
         className="water-tribe-pill"
         style={isLight ? { color: "#1F2937" } : undefined}
+        onClick={() => setModalOpen(true)}
       >
         <span className="water-tribe-pill__ring" aria-hidden="true" style={isLight ? lightRing : undefined} />
         <span className="water-tribe-pill__surface" style={isLight ? lightSurface : undefined}>
@@ -50,7 +56,7 @@ export function WaterTribeMissionPill({ mode = "light" }: { mode?: "light" | "da
           padding: 0;
           background: transparent;
           color: #f5ead7;
-          cursor: default;
+          cursor: pointer;
           isolation: isolate;
         }
 
