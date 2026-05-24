@@ -1,17 +1,41 @@
 "use client"
 
-export function WaterTribeMissionPill() {
+const lightSurface = {
+  background: "linear-gradient(160deg, #FEFAF4 0%, #F5E9D4 65%, #EFE0C4 100%)",
+  border: "1px solid rgba(195, 140, 65, 0.22)",
+  boxShadow:
+    "0 6px 20px rgba(80, 40, 10, 0.24), inset 0 1px 0 rgba(255, 248, 235, 0.9), inset 0 -1px 0 rgba(180, 120, 50, 0.08)",
+}
+
+const lightRing = {
+  background:
+    "linear-gradient(115deg, rgba(195,140,65,0.30), rgba(195,140,65,0.50), rgba(180,120,50,0.40), rgba(155,95,35,0.25), rgba(195,140,65,0.30))",
+  backgroundSize: "220% 220%",
+  boxShadow: "0 0 12px rgba(195,140,65,0.15), inset 0 0 0 1px rgba(195,140,65,0.22)",
+}
+
+export function WaterTribeMissionPill({ mode = "light" }: { mode?: "light" | "dark" }) {
+  const isLight = mode === "light"
+
   return (
     <div className="mt-5 flex justify-center px-1">
       <button
         type="button"
         aria-label="Access Water Tribe Mission"
         className="water-tribe-pill"
+        style={isLight ? { color: "#1F2937" } : undefined}
       >
-        <span className="water-tribe-pill__ring" aria-hidden="true" />
-        <span className="water-tribe-pill__surface">
-          <span className="water-tribe-pill__icon img-protected" aria-hidden="true" />
-          <span className="water-tribe-pill__text">Access Water Tribe Mission</span>
+        <span className="water-tribe-pill__ring" aria-hidden="true" style={isLight ? lightRing : undefined} />
+        <span className="water-tribe-pill__surface" style={isLight ? lightSurface : undefined}>
+          <span
+            className="water-tribe-pill__icon img-protected"
+            aria-hidden="true"
+            style={isLight ? { background: "#92400e" } : undefined}
+          />
+          <span
+            className="water-tribe-pill__text"
+            style={isLight ? { color: "#1F2937", textShadow: "none" } : undefined}
+          >Access Water Tribe Mission</span>
         </span>
       </button>
 

@@ -133,7 +133,7 @@ export function LinkBioPage() {
             bio="🐚 helping women build sustainable businesses the feminine way"
             imageUrl="/earthspearldisplay.png"
           />
-          <WaterTribeMissionPill />
+          <WaterTribeMissionPill mode={cardMode} />
         </motion.div>
 
         <motion.div className="py-8 space-y-8" variants={containerVariants}>
