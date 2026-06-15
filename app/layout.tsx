@@ -66,9 +66,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${editorial.variable} ${earthTone.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
-          <div className="fixed inset-0 -z-10 pointer-events-none">
-            <BeamsBackground />
-          </div>
+          <BeamsBackground />
           {children}
         </ThemeProvider>
       </body>
