@@ -39,6 +39,10 @@ const sections = [
         title: "HOMEMADE TALLOW BUTTERS",
         href: "http://earthspearlll.weebly.com/store/p109/earthspearlll.tallowbutter.html",
       },
+      {
+        title: "EARTHSPEARL SEA MOSS GEL",
+        href: "http://earthspearlll.weebly.com/store/p109/earthspearlll.tallowbutter.html",
+      },
     ],
   },
 ]
