@@ -118,13 +118,13 @@ const FRAG = `
 
 export function BeamsBackground({
   lightColor = "#F59E0B",
-  beamWidth = 2,
-  beamHeight = 15,
-  beamNumber = 12,
+  beamWidth = 3,
+  beamHeight = 30,
+  beamNumber = 4,
   speed = 2,
-  noiseIntensity = 1.5,
-  scale = 0.2,
-  rotation = 0,
+  noiseIntensity = 1.2,
+  scale = 0.5,
+  rotation = -20,
   style,
 }: BeamsProps) {
   const containerRef = useRef<HTMLDivElement>(null)
@@ -181,7 +181,7 @@ export function BeamsBackground({
     gl.uniform1f(u.speed, speed)
     gl.uniform1f(u.noiseIntensity, noiseIntensity)
     gl.uniform1f(u.scale, scale)
-    gl.uniform1f(u.rotation, rotation)
+    gl.uniform1f(u.rotation, rotation * (Math.PI / 180))
 
     const resize = () => {
       const w = container.clientWidth
