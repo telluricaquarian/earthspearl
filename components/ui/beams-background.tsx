@@ -117,14 +117,14 @@ const FRAG = `
 `
 
 export function BeamsBackground({
-  lightColor = "#F59E0B",
+  lightColor = "#92620A",
   beamWidth = 3,
   beamHeight = 30,
-  beamNumber = 4,
+  beamNumber = 6,
   speed = 2,
-  noiseIntensity = 1.2,
-  scale = 0.5,
-  rotation = -20,
+  noiseIntensity = 1.75,
+  scale = 0.2,
+  rotation = 30,
   style,
 }: BeamsProps) {
   const containerRef = useRef<HTMLDivElement>(null)
