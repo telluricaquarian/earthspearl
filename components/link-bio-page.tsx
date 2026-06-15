@@ -41,7 +41,7 @@ const sections = [
       },
       {
         title: "EARTHSPEARL SEA MOSS GEL",
-        href: "http://earthspearlll.weebly.com/store/p109/earthspearlll.tallowbutter.html",
+        href: "https://ig.me/m/earthspearlll",
       },
     ],
   },
