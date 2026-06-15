@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
 import "./globals.css"
-import { AnimatedGradient } from "@/components/ui/animated-gradient"
+import { BeamsBackground } from "@/components/ui/beams-background"
 import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({
@@ -67,10 +67,7 @@ export default function RootLayout({
       <body className={`${inter.className} ${editorial.variable} ${earthTone.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
           <div className="fixed inset-0 -z-10 pointer-events-none">
-            <AnimatedGradient
-              config={{ preset: "Oceanic" }}
-              noise={{ opacity: 0.25, scale: 1 }}
-            />
+            <BeamsBackground />
           </div>
           {children}
         </ThemeProvider>
