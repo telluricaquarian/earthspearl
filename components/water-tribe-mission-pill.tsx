@@ -13,14 +13,33 @@ export function WaterTribeMissionPill({ mode = "light" }: { mode?: "light" | "da
         type="button"
         aria-label="Access Water Tribe Mission"
         onClick={() => setModalOpen(true)}
-        className="group relative inline-flex h-11 max-w-full items-center justify-center gap-2.5 rounded-full bg-[#f5ead7] px-5 text-zinc-900 shadow-sm transition hover:bg-[#efe1c8] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f5ead7]/70 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+        className="group relative inline-flex h-11 max-w-full items-center justify-center gap-2.5 rounded-full px-5 text-white transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+        style={{
+          background: "rgba(255, 255, 255, 0.10)",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          border: "1px solid rgba(255, 255, 255, 0.20)",
+          boxShadow: "0 4px 16px rgba(0, 0, 0, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.18)",
+        }}
+        onMouseEnter={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 255, 255, 0.16)"
+        }}
+        onMouseLeave={(e) => {
+          (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 255, 255, 0.10)"
+        }}
       >
-        <span className="flex h-6 w-6 items-center justify-center rounded-full bg-black/90">
+        <span
+          className="flex h-6 w-6 items-center justify-center rounded-full"
+          style={{
+            background: "rgba(255, 255, 255, 0.15)",
+            border: "1px solid rgba(255, 255, 255, 0.25)",
+          }}
+        >
           <span
             aria-hidden="true"
             className="img-protected block h-full w-full"
             style={{
-              background: "#f5ead7",
+              background: "rgba(255, 255, 255, 0.90)",
               maskImage: 'url("/wtmb.png")',
               maskPosition: "center",
               maskRepeat: "no-repeat",

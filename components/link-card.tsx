@@ -15,6 +15,8 @@ interface LinkCardProps {
 const cardStyles = {
   light: {
     background: "linear-gradient(160deg, #FEFAF4 0%, #F5E9D4 65%, #EFE0C4 100%)",
+    backdropFilter: "",
+    WebkitBackdropFilter: "",
     boxShadow: "0 6px 20px rgba(80, 40, 10, 0.24), inset 0 1px 0 rgba(255, 248, 235, 0.9), inset 0 -1px 0 rgba(180, 120, 50, 0.08)",
     border: "1px solid rgba(195, 140, 65, 0.22)",
     hoverShadow: "0 10px 28px rgba(80, 40, 10, 0.32), inset 0 1px 0 rgba(255, 248, 235, 0.9), inset 0 -1px 0 rgba(180, 120, 50, 0.08)",
@@ -28,16 +30,18 @@ const cardStyles = {
     iconClassName: "text-amber-900",
   },
   dark: {
-    background: "linear-gradient(160deg, #21160F 0%, #17110D 62%, #100B08 100%)",
-    boxShadow: "0 10px 28px rgba(16, 9, 5, 0.32), inset 0 1px 0 rgba(245, 234, 215, 0.08), inset 0 -1px 0 rgba(196, 154, 108, 0.08)",
-    border: "1px solid rgba(245, 234, 215, 0.5)",
-    hoverShadow: "0 14px 34px rgba(16, 9, 5, 0.42), inset 0 1px 0 rgba(245, 234, 215, 0.12), inset 0 -1px 0 rgba(196, 154, 108, 0.12)",
-    tapShadow: "0 6px 18px rgba(16, 9, 5, 0.28), inset 0 1px 0 rgba(245, 234, 215, 0.1)",
-    iconBackground: "rgba(245, 234, 215, 0.08)",
-    iconBorder: "1px solid rgba(245, 234, 215, 0.16)",
+    background: "rgba(255, 255, 255, 0.08)",
+    backdropFilter: "blur(12px)",
+    WebkitBackdropFilter: "blur(12px)",
+    boxShadow: "0 8px 32px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.14), inset 0 -1px 0 rgba(255, 255, 255, 0.04)",
+    border: "1px solid rgba(255, 255, 255, 0.18)",
+    hoverShadow: "0 12px 40px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.20), inset 0 -1px 0 rgba(255, 255, 255, 0.06)",
+    tapShadow: "0 4px 16px rgba(0, 0, 0, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.12)",
+    iconBackground: "rgba(255, 255, 255, 0.10)",
+    iconBorder: "1px solid rgba(255, 255, 255, 0.20)",
     title: "#F5EAD7",
-    description: "#CBB89E",
-    arrow: "#C49A6C",
+    description: "rgba(255, 255, 255, 0.55)",
+    arrow: "rgba(255, 255, 255, 0.55)",
     image: "/earthspearlcream.png",
     iconClassName: "text-amber-100",
   },
@@ -54,6 +58,8 @@ export function LinkCard({ title, description, href, mode = "light", icon: Icon 
       className="group relative flex w-full items-center gap-4 rounded-[20px] px-4 py-4 overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-amber-100/70 focus-visible:ring-offset-2 focus-visible:ring-offset-[#241208]"
       style={{
         background: styles.background,
+        backdropFilter: styles.backdropFilter,
+        WebkitBackdropFilter: styles.WebkitBackdropFilter,
         boxShadow: styles.boxShadow,
         border: styles.border,
       }}
