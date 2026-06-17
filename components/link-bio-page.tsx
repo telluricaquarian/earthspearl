@@ -3,7 +3,6 @@
 import { motion } from "framer-motion"
 import { ProfileSection } from "./profile-section"
 import { LinkCard } from "./link-card"
-import { EarthsPearlLoader } from "./earths-pearl-loader"
 import { SocialFooter } from "./social-footer"
 import { TestimonialMarquee } from "./testimonial-marquee"
 import { WaterTribeMissionPill } from "./water-tribe-mission-pill"
@@ -77,8 +76,6 @@ const itemVariants = {
 export function LinkBioPage() {
   return (
     <main className="relative min-h-screen px-6 py-10 flex flex-col" style={{ zIndex: 1 }}>
-      <EarthsPearlLoader />
-
       <motion.div
         initial="hidden"
         animate="visible"
