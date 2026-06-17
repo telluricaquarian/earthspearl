@@ -13,33 +13,34 @@ export function WaterTribeMissionPill({ mode = "light" }: { mode?: "light" | "da
         type="button"
         aria-label="Access Water Tribe Mission"
         onClick={() => setModalOpen(true)}
-        className="group relative inline-flex h-11 max-w-full items-center justify-center gap-2.5 rounded-full px-5 text-white transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
+        className="group relative inline-flex h-11 max-w-full items-center justify-center gap-2.5 rounded-full px-5 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/40 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
         style={{
-          background: "rgba(255, 255, 255, 0.10)",
-          backdropFilter: "blur(12px)",
-          WebkitBackdropFilter: "blur(12px)",
-          border: "1px solid rgba(255, 255, 255, 0.20)",
-          boxShadow: "0 4px 16px rgba(0, 0, 0, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.18)",
+          background: "rgba(255,255,255,0.66)",
+          backdropFilter: "blur(14px)",
+          WebkitBackdropFilter: "blur(14px)",
+          border: "0.5px solid rgba(255,255,255,0.85)",
+          boxShadow: "0 4px 16px rgba(0,0,0,0.12), inset 0 1px 0 rgba(255,255,255,0.9)",
+          color: "#16181d",
         }}
         onMouseEnter={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 255, 255, 0.16)"
+          (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.78)"
         }}
         onMouseLeave={(e) => {
-          (e.currentTarget as HTMLButtonElement).style.background = "rgba(255, 255, 255, 0.10)"
+          (e.currentTarget as HTMLButtonElement).style.background = "rgba(255,255,255,0.66)"
         }}
       >
         <span
           className="flex h-6 w-6 items-center justify-center rounded-full"
           style={{
-            background: "rgba(255, 255, 255, 0.15)",
-            border: "1px solid rgba(255, 255, 255, 0.25)",
+            background: "rgba(0,0,0,0.05)",
+            border: "1px solid rgba(0,0,0,0.08)",
           }}
         >
           <span
             aria-hidden="true"
             className="img-protected block h-full w-full"
             style={{
-              background: "rgba(255, 255, 255, 0.90)",
+              background: "#16181d",
               maskImage: 'url("/wtmb.png")',
               maskPosition: "center",
               maskRepeat: "no-repeat",
