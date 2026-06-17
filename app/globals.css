@@ -141,7 +141,7 @@
   }
   html,
   body {
-    background-color: transparent;
+    background-color: #173b58;
     @apply text-foreground;
   }
 }

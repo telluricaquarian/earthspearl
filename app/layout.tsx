@@ -3,7 +3,7 @@ import type { Metadata, Viewport } from "next"
 import { Inter } from "next/font/google"
 import localFont from "next/font/local"
 import "./globals.css"
-import { BeamsBackground } from "@/components/ui/beams-background"
+import { OceanBackground } from "@/components/OceanBackground"
 import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({
@@ -66,7 +66,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} ${editorial.variable} ${earthTone.variable} font-sans antialiased`}>
         <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark">
-          <BeamsBackground />
+          <OceanBackground />
           {children}
         </ThemeProvider>
       </body>

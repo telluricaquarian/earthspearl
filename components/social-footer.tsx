@@ -37,7 +37,8 @@ export function SocialFooter() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label={social.label}
-            className="flex h-10 w-10 items-center justify-center rounded-full text-white transition-opacity hover:opacity-75"
+            className="flex h-10 w-10 items-center justify-center rounded-full transition-opacity hover:opacity-75"
+            style={{ color: "#1b2b3a" }}
             whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 600, damping: 20 }}
@@ -47,7 +48,7 @@ export function SocialFooter() {
         ))}
       </div>
 
-      <p className="text-[11px] text-gray-400">© 2026 Earths Pearl</p>
+      <p className="text-[11px]" style={{ color: "rgba(27,43,58,0.55)" }}>© 2026 Earths Pearl</p>
     </div>
   )
 }
