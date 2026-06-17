@@ -8,14 +8,14 @@ const testimonials = [
   "I cracked open the new jar the other week and it is BLESSED!!! sooo creamy and moisturizing I honestly rly love the tallow need it 4ever",
 ]
 
-const separator = <span className="mx-6 text-[11px] select-none" style={{ color: "rgba(27,43,58,0.40)" }}>🐚</span>
+const separator = <span className="mx-6 text-white/35 text-[11px] select-none">🐚</span>
 
 export function TestimonialMarquee() {
   const track = [...testimonials, ...testimonials]
 
   return (
     <div className="mb-5">
-      <p className="text-[10px] uppercase tracking-[0.18em] px-1 mb-3" style={{ color: "rgba(27,43,58,0.50)" }}>
+      <p className="text-[10px] uppercase tracking-[0.18em] text-white/40 px-1 mb-3">
         what customers are saying
       </p>
 
@@ -41,7 +41,7 @@ export function TestimonialMarquee() {
               <span
                 className="text-[13px] whitespace-nowrap"
                 style={{
-                  color: "rgba(27,43,58,0.78)",
+                  color: "rgba(245, 234, 215, 0.84)",
                   fontFamily: "inherit",
                   fontStyle: "normal",
                   fontWeight: 400,

@@ -95,35 +95,26 @@ export function LinkBioPage() {
         </motion.div>
 
         <motion.div className="py-8 space-y-8" variants={containerVariants}>
-          {sections.map((section) => {
-            const isPearlSection = section.label === "SHOP EARTHS PEARL"
-            return (
-              <motion.div key={section.label} variants={itemVariants}>
-                <div className="mb-4 px-1">
-                  <p
-                    className="text-[11px] uppercase tracking-[0.15em] font-semibold"
-                    style={{ color: isPearlSection ? "rgba(27,43,58,0.72)" : "rgba(255,255,255,0.65)" }}
-                  >
-                    {section.label}
-                  </p>
-                  <p
-                    className="text-[12px] mt-1"
-                    style={{ color: isPearlSection ? "rgba(27,43,58,0.50)" : "rgba(255,255,255,0.40)" }}
-                  >
-                    {section.subtext}
-                  </p>
-                </div>
-                {isPearlSection && <TestimonialMarquee />}
-                <div className="space-y-3">
-                  {section.links.map((link) => (
-                    <motion.div key={link.title} variants={itemVariants}>
-                      <LinkCard {...link} mode={isPearlSection ? "light" : "dark"} />
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            )
-          })}
+          {sections.map((section) => (
+            <motion.div key={section.label} variants={itemVariants}>
+              <div className="mb-4 px-1">
+                <p className="text-[11px] uppercase tracking-[0.15em] font-semibold text-white/65">
+                  {section.label}
+                </p>
+                <p className="text-[12px] text-white/40 mt-1">
+                  {section.subtext}
+                </p>
+              </div>
+              {section.label === "SHOP EARTHS PEARL" && <TestimonialMarquee />}
+              <div className="space-y-3">
+                {section.links.map((link) => (
+                  <motion.div key={link.title} variants={itemVariants}>
+                    <LinkCard {...link} mode="dark" />
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
 
         <motion.div variants={itemVariants} className="pb-2">
